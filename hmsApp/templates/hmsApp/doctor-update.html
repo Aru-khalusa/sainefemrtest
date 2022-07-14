@@ -1,0 +1,37 @@
+{% extends "hmsApp/base.html" %}
+
+{% block title %}Update Diagnosis{% endblock title %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row mt-5">
+            <h1 class="ps-4">Update Treatment For: {{ diagnosis.patient.bio.firstname }} {{ diagnosis.patient.bio.lastname }}, {{ diagnosis.patient.bio.gender }}, a {{ diagnosis.patient.bio.nationality}} (Born in {{ diagnosis.patient.bio.dob}})</h1>
+        </div>
+        <div class="row">
+            <div class="w-50">
+                <form action="" method="POST" class="w-50 ms-3 me-auto mt-3">
+                    {% csrf_token %}
+                    
+                    <div class="mb-4">
+                        <label for="patient" class="form-label me-2">Patient</label>
+                        {{ form.patient }}
+                    </div>
+                    <div class="form-floating mb-4">
+                        {{ form.diagnostic }}
+                        <label for="floatingInput">Diagnostic</label>
+                    </div>
+                    <div class="form-floating mb-4">
+                        {{ form.treatment }}
+                        <label for="floatingInput">Treatment</label>
+                    </div>
+                    
+                    <div class="d-grid justify-content-center mb-4">
+                        <button type="submit" class="btn btn-primary text-light">Update Treatment For {{diagnosis.patient.bio.firstname}}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

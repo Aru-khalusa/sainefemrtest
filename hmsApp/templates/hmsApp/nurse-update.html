@@ -1,0 +1,37 @@
+{% extends "hmsApp/base.html" %}
+
+{% block title %}Update Vitals{% endblock title %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row mt-5">
+            <h1 class="ps-4">Update Vitals For: {{ vitals.bio.firstname }} {{ vitals.bio.lastname }}, {{ vitals.bio.gender }}, a {{ vitals.bio.nationality}} (Born in {{ vitals.bio.dob}})</h1>
+        </div>
+        <div class="row">
+            <div class="w-50">
+                <form action="" method="POST" class="w-50 ms-3 me-auto mt-3">
+                    {% csrf_token %}
+                    
+                    <div class="mb-4">
+                        <label for="bio" class="form-label me-2">Patient</label>
+                        {{ form.bio }}
+                    </div>
+                    <div class="form-floating mb-4">
+                        {{ form.weight }}
+                        <label for="floatingInput">Weight</label>
+                    </div>
+                    <div class="form-floating mb-4">
+                        {{ form.temperature }}
+                        <label for="floatingInput">Temperature</label>
+                    </div>
+                    
+                    <div class="d-grid justify-content-center mb-4">
+                        <button type="submit" class="btn btn-primary text-light">Update Vitals For {{vitals.bio.firstname}}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
